@@ -5,7 +5,9 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Flat(models.Model):
-
+    owner = models.CharField('ФИО владельца', max_length=200)
+    owners_phonenumber = models.CharField('Номер владельца', max_length=20)
+    owner_pure_phone = PhoneNumberField('Нормализованный номер владельца', blank=True, null=True)
     new_building = models.NullBooleanField('Новостройка')
     created_at = models.DateTimeField(
         'Когда создано объявление',
@@ -56,14 +58,9 @@ class Flat(models.Model):
         null=True
     )
 
-
     def __str__(self):
         return f'{self.town}, {self.address} ({self.price}р.)'
 
-#class CustomUser(models.Model):
-#    user = models.OneToOneField(User, on_delete=models.CASCADE)
-#    bio = models.TextField(max_length=500, blank=True)
-#    pass
 
 class Complain(models.Model):
     user = models.ForeignKey(
@@ -98,10 +95,10 @@ class Owner(models.Model):
         blank=True,
         null=True
     )
+
     def __str__(self):
         return f'{self.owner}'
 
     class Meta:
         verbose_name = 'Собственника'
         verbose_name_plural = 'Собственники'
-

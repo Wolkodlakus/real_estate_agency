@@ -12,18 +12,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='flat',
-            name='owner',
-        ),
-        migrations.RemoveField(
-            model_name='flat',
-            name='owner_pure_phone',
-        ),
-        migrations.RemoveField(
-            model_name='flat',
-            name='owners_phonenumber',
-        ),
         migrations.AlterField(
             model_name='flat',
             name='liked_by',
@@ -36,7 +24,7 @@ class Migration(migrations.Migration):
                 ('owner', models.CharField(max_length=200, verbose_name='ФИО владельца')),
                 ('owners_phonenumber', models.CharField(max_length=20, verbose_name='Номер владельца')),
                 ('owner_pure_phone', phonenumber_field.modelfields.PhoneNumberField(blank=True, max_length=128, null=True, region=None, verbose_name='Нормализованный номер владельца')),
-                ('flats', models.ManyToManyField(blank=True, null=True, related_name='owners', to='property.Flat', verbose_name='Квартиры в собственности')),
+                ('flat', models.ManyToManyField(blank=True, null=True, related_name='owners', to='property.Flat', verbose_name='Квартиры в собственности')),
             ],
             options={
                 'verbose_name': 'Собственники',

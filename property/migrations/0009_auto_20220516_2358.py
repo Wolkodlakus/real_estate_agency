@@ -2,6 +2,7 @@
 import phonenumbers
 from django.db import migrations
 
+
 def normalize_phonenumber(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
     for flat in Flat.objects.all():
@@ -20,7 +21,6 @@ def normalize_phonenumber(apps, schema_editor):
             phonenumbers.PhoneNumberFormat.E164)
         flat.save()
 
-    pass
 
 class Migration(migrations.Migration):
 

@@ -4,7 +4,9 @@ from django.db import migrations
 
 
 def specify_new_building(apps, schema_editor):
-    '''Указание новостройка или нет'''
+    """
+    Указание новостройка или нет
+    """
     Flat = apps.get_model('property', 'Flat')
     for flat in Flat.objects.all():
         if not flat.new_building:
@@ -24,5 +26,3 @@ class Migration(migrations.Migration):
     operations = [
         migrations.RunPython(specify_new_building),
     ]
-
-
