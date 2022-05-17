@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='flat',
             name='owner_pure_phone',
-            field=phonenumber_field.modelfields.PhoneNumberField(blank=True, max_length=128, region=None),
+            field=phonenumber_field.modelfields.PhoneNumberField(blank=True, null=True, max_length=128, region=None),
         ),
     ]
