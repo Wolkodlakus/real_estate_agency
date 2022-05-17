@@ -31,4 +31,5 @@ class OwnerAdmin(admin.ModelAdmin):
     list_display = ('owner', 'owners_phonenumber', 'owner_pure_phone')
 
 
+
 admin.site.register(Owner, OwnerAdmin)
