@@ -49,7 +49,7 @@ class Flat(models.Model):
         db_index=True)
     liked_by = models.ManyToManyField(
         User,
-        related_name="liked_posts",
+        related_name="liked_flats",
         verbose_name='Кто лайкнул',
         blank=True,
         null=True
@@ -78,7 +78,7 @@ class Complain(models.Model):
         null=True,
         verbose_name='Квартира, на которую жаловались'
     )
-    text_complain = models.TextField(verbose_name='Текст жалобы:', blank=True, null=True)
+    text_complain = models.TextField(verbose_name='Текст жалобы:', blank=True)
 
     class Meta:
         verbose_name = 'Жалобу'
