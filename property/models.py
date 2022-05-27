@@ -70,7 +70,7 @@ class Complain(models.Model):
         blank=True,
         null=True,
         verbose_name='Кто жаловался',
-        related_name='Complains'
+        related_name='complains'
     )
     flat = models.ForeignKey(
         Flat,
@@ -78,7 +78,7 @@ class Complain(models.Model):
         blank=True,
         null=True,
         verbose_name='Квартира, на которую жаловались',
-        related_name='Complains'
+        related_name='complains'
     )
     text_complain = models.TextField(verbose_name='Текст жалобы:', blank=True)
 
@@ -90,7 +90,7 @@ class Complain(models.Model):
 class Owner(models.Model):
     owner = models.CharField('ФИО владельца', max_length=200, db_index=True)
     owners_phonenumber = models.CharField('Номер владельца', max_length=20)
-    owner_pure_phone = PhoneNumberField('Нормализованный номер владельца', blank=True, null=True)
+    owner_phone = PhoneNumberField('Нормализованный номер владельца', blank=True, null=True)
     flat = models.ManyToManyField(
         Flat,
         related_name="owners",
@@ -100,7 +100,7 @@ class Owner(models.Model):
     )
 
     def __str__(self):
-        return f'{self.owner}'
+        return self.owner
 
     class Meta:
         verbose_name = 'Собственника'

@@ -2,15 +2,15 @@
 
 from django.db import migrations
 
+
 def replace_none(apps, schema_editor):
     """
     Замена None на ''
     """
     Complain = apps.get_model('property', 'Complain')
-    for complain in Complain.objects.all():
-        if complain.text_complain is None:
-            complain.text_complain = ''
-            complain.save()
+    for complain in Complain.objects.all().filter(text_complain__isnull=True):
+        complain.text_complain = ''
+        complain.save()
 
 
 class Migration(migrations.Migration):
