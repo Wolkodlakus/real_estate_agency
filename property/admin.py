@@ -33,4 +33,4 @@ class ComplainAdmin(admin.ModelAdmin):
 @admin.register(Owner)
 class OwnerAdmin(admin.ModelAdmin):
     raw_id_fields = ('flat',)
-    list_display = ('owner', 'owners_phonenumber', 'owner_phone')
+    list_display = ('owner', 'phone', 'pure_phone')
